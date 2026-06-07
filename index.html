@@ -1,25 +1,240 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>App Demos</title>
-  <link rel="stylesheet" href="restaurant-demo/css/app.css">
+  <title>Демо-проекты — AXIIOM</title>
   <style>
-    .landing { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px; text-align:center; padding:40px 20px; }
-    .demo-link { display:block; padding:24px 32px; background:var(--bg-card); border-radius:16px; width:100%; max-width:360px; text-decoration:none; color:var(--text); transition:0.2s; }
-    .demo-link:hover { background:var(--bg-light); transform:translateY(-2px); }
-    .demo-link h2 { margin:0 0 8px; font-size:20px; }
-    .demo-link p { margin:0; font-size:13px; color:var(--text-muted); }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f0f11;
+      --bg-card: #1a1a1e;
+      --bg-card-hover: #222228;
+      --border: #2a2a30;
+      --text: #e8e6e3;
+      --text-muted: #888;
+      --accent: #6c5ce7;
+      --accent2: #00b894;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      margin-bottom: 8px;
+    }
+    header p {
+      color: var(--text-muted);
+      font-size: .9rem;
+    }
+    .grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      opacity: .6;
+      transition: opacity .25s;
+    }
+    .card:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+    .card:hover::before { opacity: 1; }
+    .card-tag {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .card h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .card p {
+      font-size: .82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      flex: 1;
+    }
+    .card .tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+    }
+    .card .tech span {
+      font-size: .7rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.06);
+      color: var(--text-muted);
+    }
+    .card .arrow {
+      margin-top: 16px;
+      font-size: .85rem;
+      color: var(--accent);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .card .arrow span { transition: transform .2s; }
+    .card:hover .arrow span { transform: translateX(4px); }
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      font-size: .75rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    @media (max-width: 640px) {
+      header { padding: 40px 16px 24px; }
+      header h1 { font-size: 1.5rem; }
+      .grid { grid-template-columns: 1fr; padding: 0 16px 60px; }
+    }
   </style>
 </head>
 <body>
-  <div class="landing">
-    <h1>App Demos</h1>
-    <a class="demo-link" href="demo-template/">
-      <h2>&#127891; University Portal</h2>
-      <p>Student/graduate mobile app demo</p>
+  <header>
+    <h1>Демо-проекты AXIIOM</h1>
+    <p>Интерактивные приложения и интерфейсы</p>
+  </header>
+  <div class="grid">
+
+    <a class="card" href="demo-template/" style="--accent:#6c5ce7">
+      <span class="card-tag">SPA</span>
+      <h2>University Portal</h2>
+      <p>Цифровая экосистема университета: электронная зачётка, расписание, чат с деканатом, проход в общежитие — всё в одном приложении.</p>
+      <div class="tech">
+        <span>HTML/CSS/JS</span>
+        <span>PWA</span>
+        <span>SPA</span>
+      </div>
+      <div class="arrow">Открыть <span>&rarr;</span></div>
     </a>
+
+    <a class="card" href="https://bestdeejay-design.github.io/padl/" target="_blank" rel="noopener" style="--accent:#f39c12">
+      <span class="card-tag">SAAS</span>
+      <h2>PadelPro</h2>
+      <p>SAAS-платформа для управления падел-клубом: бронирование кортов, учёт клиентов, расписание, аналитика и финансы.</p>
+      <div class="tech">
+        <span>Dashboard</span>
+        <span>UI/UX</span>
+      </div>
+      <div class="arrow">Открыть <span>&rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://bestdeejay-design.github.io/catalog/" target="_blank" rel="noopener" style="--accent:#0984e3">
+      <span class="card-tag">Vue SPA</span>
+      <h2>Каталог заведений</h2>
+      <p>Каталог заведений России с поиском, фильтрацией, картой и подробной информацией о каждом месте.</p>
+      <div class="tech">
+        <span>Vue</span>
+        <span>API</span>
+        <span>Карты</span>
+      </div>
+      <div class="arrow">Открыть <span>&rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://bestdeejay-design.github.io/booking/" target="_blank" rel="noopener" style="--accent:#636e72">
+      <span class="card-tag">Vue SPA</span>
+      <h2>Grand Hotel</h2>
+      <p>Система бронирования номеров и услуг отеля: календарь доступности, онлайн-оплата, управление бронями.</p>
+      <div class="tech">
+        <span>Vue</span>
+        <span>Vite</span>
+        <span>Booking</span>
+      </div>
+      <div class="arrow">Открыть <span>&rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://web-test.lovii.ru/" target="_blank" rel="noopener" style="--accent:#e84393">
+      <span class="card-tag">React PWA</span>
+      <h2>Lovii — веб-приложение</h2>
+      <p>Пользовательский интерфейс платформы лояльности: каталог, профиль, баллы, промокоды и история операций.</p>
+      <div class="tech">
+        <span>React</span>
+        <span>PWA</span>
+        <span>UI/UX</span>
+      </div>
+      <div class="arrow">Открыть <span>&rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://b2b-test.lovii.ru/" target="_blank" rel="noopener" style="--accent:#6c5ce7">
+      <span class="card-tag">React SPA</span>
+      <h2>Lovii — B2B-портал</h2>
+      <p>Партнёрский портал для бизнеса: управление программами лояльности, отчёты и аналитика по клиентам.</p>
+      <div class="tech">
+        <span>React</span>
+        <span>B2B</span>
+        <span>Dashboard</span>
+      </div>
+      <div class="arrow">Открыть <span>&rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://admin-test.lovii.ru/" target="_blank" rel="noopener" style="--accent:#00b894">
+      <span class="card-tag">React SPA</span>
+      <h2>Lovii — Админ-панель</h2>
+      <p>Полная админ-панель платформы: пользователи, роли, контент, настройки системы и мониторинг.</p>
+      <div class="tech">
+        <span>React</span>
+        <span>Admin</span>
+        <span>RBAC</span>
+      </div>
+      <div class="arrow">Открыть <span>&rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://univerid.ru/" target="_blank" rel="noopener" style="--accent:#a29bfe">
+      <span class="card-tag">SPA</span>
+      <h2>UniverID</h2>
+      <p>Цифровая экосистема университета с электронной зачёткой, расписанием, чатом и проходом в общежитие.</p>
+      <div class="tech">
+        <span>HTML/CSS/JS</span>
+        <span>UI/UX</span>
+        <span>PWA</span>
+      </div>
+      <div class="arrow">Открыть <span>&rarr;</span></div>
+    </a>
+
   </div>
+  <footer>
+    <a href="https://axiiom.ru/" target="_blank" rel="noopener">AXIIOM</a> &mdash; разработка сайтов, мобильных и веб-приложений
+  </footer>
 </body>
 </html>
