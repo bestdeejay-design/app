@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Демо-проекты — AXIIOM</title>
+  <title>SPA Demos — AXIIOM</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -14,109 +14,70 @@
       --text: #e8e6e3;
       --text-muted: #888;
       --accent: #6c5ce7;
-      --accent2: #00b894;
     }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-    header {
-      text-align: center;
-      padding: 60px 20px 40px;
-    }
-    header h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -.02em;
-      margin-bottom: 8px;
-    }
-    header p {
-      color: var(--text-muted);
-      font-size: .9rem;
-    }
+    header { text-align: center; padding: 60px 20px 40px; }
+    header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+    header p { color: var(--text-muted); font-size: .9rem; }
     .grid {
-      max-width: 1100px;
+      max-width: 700px;
       margin: 0 auto;
       padding: 0 20px 80px;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 16px;
+      gap: 12px;
     }
     .card {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      gap: 16px;
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
+      border-radius: 14px;
+      padding: 20px 24px;
       text-decoration: none;
       color: var(--text);
-      transition: all .25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      opacity: .6;
-      transition: opacity .25s;
+      transition: all .2s;
     }
     .card:hover {
       background: var(--bg-card-hover);
-      transform: translateY(-3px);
       border-color: var(--accent);
+      transform: translateY(-2px);
     }
-    .card:hover::before { opacity: 1; }
-    .card-tag {
-      display: inline-block;
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
-    .card h2 {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-    .card p {
-      font-size: .82rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      flex: 1;
-    }
-    .card .tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 16px;
-    }
-    .card .tech span {
-      font-size: .7rem;
-      padding: 3px 10px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.06);
-      color: var(--text-muted);
-    }
-    .card .arrow {
-      margin-top: 16px;
-      font-size: .85rem;
-      color: var(--accent);
-      font-weight: 500;
+    .card .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
-      gap: 4px;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
     }
-    .card .arrow span { transition: transform .2s; }
-    .card:hover .arrow span { transform: translateX(4px); }
+    .card .body { flex: 1; }
+    .card .body h2 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+    .card .body p { font-size: .8rem; color: var(--text-muted); }
+    .card .arrow { color: var(--text-muted); font-size: 1.2rem; transition: transform .2s; }
+    .card:hover .arrow { transform: translateX(4px); color: var(--accent); }
+    .placeholder {
+      border: 1px dashed var(--border);
+      background: transparent;
+      cursor: default;
+      opacity: .4;
+    }
+    .placeholder:hover {
+      background: transparent;
+      border-color: var(--border);
+      transform: none;
+    }
     footer {
+      margin-top: auto;
       text-align: center;
       padding: 40px 20px;
       color: var(--text-muted);
@@ -126,115 +87,34 @@
     @media (max-width: 640px) {
       header { padding: 40px 16px 24px; }
       header h1 { font-size: 1.5rem; }
-      .grid { grid-template-columns: 1fr; padding: 0 16px 60px; }
+      .grid { padding: 0 16px 60px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Демо-проекты AXIIOM</h1>
-    <p>Интерактивные приложения и интерфейсы</p>
+    <h1>SPA Demos</h1>
+    <p>Интерактивные одностраничные приложения</p>
   </header>
   <div class="grid">
-
-    <a class="card" href="demo-template/" style="--accent:#6c5ce7">
-      <span class="card-tag">SPA</span>
-      <h2>University Portal</h2>
-      <p>Цифровая экосистема университета: электронная зачётка, расписание, чат с деканатом, проход в общежитие — всё в одном приложении.</p>
-      <div class="tech">
-        <span>HTML/CSS/JS</span>
-        <span>PWA</span>
-        <span>SPA</span>
+    <a class="card" href="demo-template/">
+      <div class="icon" style="background:rgba(108,92,231,.15);color:#6c5ce7">&#127891;</div>
+      <div class="body">
+        <h2>University Portal</h2>
+        <p>Студенческий портал: зачётка, расписание, чат, проход в общежитие</p>
       </div>
-      <div class="arrow">Открыть <span>&rarr;</span></div>
+      <div class="arrow">&rarr;</div>
     </a>
-
-    <a class="card" href="https://bestdeejay-design.github.io/padl/" target="_blank" rel="noopener" style="--accent:#f39c12">
-      <span class="card-tag">SAAS</span>
-      <h2>PadelPro</h2>
-      <p>SAAS-платформа для управления падел-клубом: бронирование кортов, учёт клиентов, расписание, аналитика и финансы.</p>
-      <div class="tech">
-        <span>Dashboard</span>
-        <span>UI/UX</span>
+    <div class="card placeholder">
+      <div class="icon" style="background:rgba(136,136,136,.1);color:#666">+</div>
+      <div class="body">
+        <h2>Следующее демо</h2>
+        <p>Будет добавлено</p>
       </div>
-      <div class="arrow">Открыть <span>&rarr;</span></div>
-    </a>
-
-    <a class="card" href="https://bestdeejay-design.github.io/catalog/" target="_blank" rel="noopener" style="--accent:#0984e3">
-      <span class="card-tag">Vue SPA</span>
-      <h2>Каталог заведений</h2>
-      <p>Каталог заведений России с поиском, фильтрацией, картой и подробной информацией о каждом месте.</p>
-      <div class="tech">
-        <span>Vue</span>
-        <span>API</span>
-        <span>Карты</span>
-      </div>
-      <div class="arrow">Открыть <span>&rarr;</span></div>
-    </a>
-
-    <a class="card" href="https://bestdeejay-design.github.io/booking/" target="_blank" rel="noopener" style="--accent:#636e72">
-      <span class="card-tag">Vue SPA</span>
-      <h2>Grand Hotel</h2>
-      <p>Система бронирования номеров и услуг отеля: календарь доступности, онлайн-оплата, управление бронями.</p>
-      <div class="tech">
-        <span>Vue</span>
-        <span>Vite</span>
-        <span>Booking</span>
-      </div>
-      <div class="arrow">Открыть <span>&rarr;</span></div>
-    </a>
-
-    <a class="card" href="https://web-test.lovii.ru/" target="_blank" rel="noopener" style="--accent:#e84393">
-      <span class="card-tag">React PWA</span>
-      <h2>Lovii — веб-приложение</h2>
-      <p>Пользовательский интерфейс платформы лояльности: каталог, профиль, баллы, промокоды и история операций.</p>
-      <div class="tech">
-        <span>React</span>
-        <span>PWA</span>
-        <span>UI/UX</span>
-      </div>
-      <div class="arrow">Открыть <span>&rarr;</span></div>
-    </a>
-
-    <a class="card" href="https://b2b-test.lovii.ru/" target="_blank" rel="noopener" style="--accent:#6c5ce7">
-      <span class="card-tag">React SPA</span>
-      <h2>Lovii — B2B-портал</h2>
-      <p>Партнёрский портал для бизнеса: управление программами лояльности, отчёты и аналитика по клиентам.</p>
-      <div class="tech">
-        <span>React</span>
-        <span>B2B</span>
-        <span>Dashboard</span>
-      </div>
-      <div class="arrow">Открыть <span>&rarr;</span></div>
-    </a>
-
-    <a class="card" href="https://admin-test.lovii.ru/" target="_blank" rel="noopener" style="--accent:#00b894">
-      <span class="card-tag">React SPA</span>
-      <h2>Lovii — Админ-панель</h2>
-      <p>Полная админ-панель платформы: пользователи, роли, контент, настройки системы и мониторинг.</p>
-      <div class="tech">
-        <span>React</span>
-        <span>Admin</span>
-        <span>RBAC</span>
-      </div>
-      <div class="arrow">Открыть <span>&rarr;</span></div>
-    </a>
-
-    <a class="card" href="https://univerid.ru/" target="_blank" rel="noopener" style="--accent:#a29bfe">
-      <span class="card-tag">SPA</span>
-      <h2>UniverID</h2>
-      <p>Цифровая экосистема университета с электронной зачёткой, расписанием, чатом и проходом в общежитие.</p>
-      <div class="tech">
-        <span>HTML/CSS/JS</span>
-        <span>UI/UX</span>
-        <span>PWA</span>
-      </div>
-      <div class="arrow">Открыть <span>&rarr;</span></div>
-    </a>
-
+    </div>
   </div>
   <footer>
-    <a href="https://axiiom.ru/" target="_blank" rel="noopener">AXIIOM</a> &mdash; разработка сайтов, мобильных и веб-приложений
+    <a href="https://axiiom.ru/" target="_blank" rel="noopener">AXIIOM</a>
   </footer>
 </body>
 </html>
